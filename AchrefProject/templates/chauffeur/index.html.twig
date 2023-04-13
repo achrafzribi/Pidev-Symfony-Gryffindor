@@ -1,0 +1,66 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Chauffeur index{% endblock %}
+
+{% block body %}
+   <center> <h1>Chauffeur List</h1></center>
+    <div class="d-flex justify-content-center mt-4">
+    <div class="text-center">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom du chauffeur </th>
+                <th>Prénom du chauffeur</th>
+                <th>Numéro du chauffeur</th>
+                <th>Adresse du chauffeur</th>
+                <th>Email du chauffeur</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for chauffeur in chauffeurs %}
+            <tr>
+                <td>{{ chauffeur.id }}</td>
+                <td>{{ chauffeur.nomc }}</td>
+                <td>{{ chauffeur.prenomc }}</td>
+                <td>{{ chauffeur.numc }}</td>
+                <td>{{ chauffeur.adressec }}</td>
+                <td>{{ chauffeur.emailc }}</td>
+                <td style="display: flex;gap: 10px;">
+                  <Button>  <a href="{{ path('app_chauffeur_show_back', {'id': chauffeur.id}) }}">show</a> </Button> 
+                  <Button>  <a href="{{ path('app_chauffeur_edit_back', {'id': chauffeur.id}) }}">edit</a> </Button> 
+                    {{ include('chauffeur/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+    <Button>  <a href="{{ path('app_chauffeur_new_back') }}">Create new</a></Button> 
+<style>
+    .mt-4 {
+        margin-top: 4rem;
+    }
+    table {
+        width: 90%;
+        margin: 1rem auto;
+        border-collapse: collapse;
+        border: 2px solid #ffb6c1; /* pink border */
+        box-shadow: 0px 0px 10px #9370db; /* purple shadow */
+        table-layout: auto;
+    }
+    th, td,th {
+        border: 1px solid ; /* purple border */
+       padding: 0.5rem;
+       text-align: center;
+       
+      }
+    </style>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Chauffeur{% endblock %}
+
+{% block body %}
+    <center><h1>Chauffeur</h1></center>
+    <div class="d-flex flex-column align-items-center">
+        <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-md-6">
+                  <div class="card-body">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ chauffeur.id }}</td>
+            </tr>
+            <tr>
+                <th>Nomc</th>
+                <td>{{ chauffeur.nomc }}</td>
+            </tr>
+            <tr>
+                <th>Prenomc</th>
+                <td>{{ chauffeur.prenomc }}</td>
+            </tr>
+            <tr>
+                <th>Numc</th>
+                <td>{{ chauffeur.numc }}</td>
+            </tr>
+            <tr>
+                <th>Adressec</th>
+                <td>{{ chauffeur.adressec }}</td>
+            </tr>
+            <tr>
+                <th>Emailc</th>
+                <td>{{ chauffeur.emailc }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+</div>
+
+    <a href="{{ path('app_chauffeur_index_back') }}">back to list</a>
+
+    <style>
+        table {
+            margin-top: 0.2rem;
+            border: 4px solid black;
+    
+        }
+        th, td,tr {
+            border: 4px solid black;
+            padding: 0.5rem;
+            text-align: center;
+    
+          } 
+    </style>  
+{% endblock %}
