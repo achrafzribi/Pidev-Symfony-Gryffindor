@@ -1,0 +1,69 @@
+controllers:
+    resource: ../src/Controller/
+    type: annotation
+
+kernel:
+    resource: ../src/Kernel.php
+    type: annotation
+
+app_paiement_new:
+    path: /new
+    controller: App\Controller\PaiementController::new
+    methods: [GET, POST]
+
+app_pay_method_new:
+    path: /new1
+    controller: App\Controller\PayMethodController::new
+    methods: [GET, POST]
+
+dashboards_ecommerce : 
+   path: /dashboards/ecommerce
+   controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+   defaults: 
+         template : 'dashboards_ecommerce.html.twig'
+
+dashboards_corona:
+    path: /dashboards/corona
+    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+    defaults:
+        template: 'dashboards_corona.html.twig'
+
+index:
+    path: /
+    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+    defaults:
+        template: 'index.html.twig'
+
+dashboards_crypto:
+    path: /dashboards/crypto
+    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+    defaults:
+        template: 'dashboards_crypto.html.twig'
+
+client_page:
+    path: /secondTemp/index
+    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+    defaults:
+        template: 'SecTemp/page-starter1.html.twig'
+
+client_page1:
+    path: /secondTemp/index2
+    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+    defaults:
+        template: 'SecTemp/add-paiement1.html.twig'
+
+
+
+        
+
+
+
+#Paiement_index:
+  #  path: /index
+  #  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+   # defaults:
+   #     template: 'paiement/index.html.twig'
+
+#app_dashboard_index:
+ #   path: /dashboards/index.html.twig
+  #  controller: App\Controller\DashboardController::index
