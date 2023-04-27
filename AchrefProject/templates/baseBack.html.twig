@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('assets/fonts/pe-icon-7-stroke.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fonts/feather.css') }}">
       <!-- Core stylesheets -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-material.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/shreerang-material.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/uikit.css') }}">
@@ -61,11 +62,7 @@
                         </div>
                      </a>
                      <ul class="sidenav-menu">
-                        <li class="sidenav-item">
-                           <a href="#" class="sidenav-link">
-                              <div>Default</div>
-                           </a>
-                        </li>
+                        
                        
                         <li class="sidenav-item">
                            <a href="{{path('app_chauffeur_index_back')}}" class="sidenav-link">
@@ -78,18 +75,12 @@
                            </a>
                         </li>
                         <li class="sidenav-item">
-                           <a href="dashboards_crypto.html" class="sidenav-link">
-                              <div>Crypto</div>
-                              <div class="pl-1 ml-auto">
-                                 <div class="badge badge-danger">New</div>
-                              </div>
+                           <a href="{{path('app_chauffeur_statistics')}}" class="sidenav-link">
+                              <div>Info Trafics & Chauffeurs Stats</div>
                            </a>
                         </li>
-                        <li class="sidenav-item">
-                           <a href="dashboards_project.html" class="sidenav-link">
-                              <div>Project</div>
-                           </a>
-                        </li>
+                       
+                      
                      </ul>
                   </li>
                   <li class="sidenav-item">
@@ -1311,6 +1302,8 @@
                
       <!-- [ Layout wrapper] End -->
       <!-- Core scripts -->
+      {% block javascripts %}
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
       <script src="assets/js/pace.js"></script>
       <script src="assets/js/jquery-3.3.1.min.js"></script>
       <script src="assets/libs/popper/popper.js"></script>
@@ -1328,6 +1321,8 @@
       <!-- Demo -->
       <script src="assets/js/demo.js"></script><script src="assets/js/analytics.js"></script>
       <script src="assets/js/pages/dashboards_crypto.js"></script>
+                                           {%endblock%}
+
    </body>
 
 <!-- Mirrored from html.phoenixcoded.net/empire/bootstrap/default/dashboards_corona.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 Mar 2023 14:49:33 GMT -->

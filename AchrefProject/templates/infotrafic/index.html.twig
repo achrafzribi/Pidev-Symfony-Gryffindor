@@ -20,11 +20,18 @@
             <tr>
                 <td>{{ infotrafic.type }}</td>
                 <td>{{ infotrafic.description }}</td>
-                <td>nom:{{infotrafic.chauffeur.nomc }}/prenom:{{infotrafic.chauffeur.prenomc }}/email:{{infotrafic.chauffeur.emailc }}/numéro:{{infotrafic.chauffeur.numc }}/adresse:{{infotrafic.chauffeur.adressec }}</td>
+                <td>nom:{{infotrafic.chauffeur.nomc }}/prenom:{{infotrafic.chauffeur.prenomc }}/email:{{infotrafic.chauffeur.emailc }}</td>
                 <td style="display: flex;gap: 10px;">
                     <Button>  <a href="{{ path('app_infotrafic_show', {'id': infotrafic.id}) }}">Show</a></Button>
                         <Button>  <a href="{{ path('app_infotrafic_edit', {'id': infotrafic.id}) }}">Edit</a></Button>
                 {{ include('infotrafic/_delete_form.html.twig') }}
+                <form action="{{ path('app_infotraffic_like', {'infoid': infotrafic.id}) }}" method="post" class="d-inline">
+                    <button type="submit" class="btn btn-success"><i class="far fa-thumbs-up"></i></button>
+                </form>
+    
+                <form action="{{ path('app_infotraffic_dislike', {'infoid': infotrafic.id}) }}" method="post" class="d-inline">
+                    <button type="submit" class="btn btn-danger"><i class="far fa-thumbs-down"></i></button>
+                </form>
                 </td>
             </tr>
         {% else %}
@@ -34,11 +41,24 @@
         {% endfor %}
         </tbody>
     </table>
+    {% for flashMessage in app.flashes('success') %}
+    <div id="flash-message" class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+  {% endfor %}
+  {% if infotrafics|length > 0 %}
+  <div class="d-flex justify-content-center my-4">
+      {{ knp_pagination_render(infotrafics) }}
+  </div>
+{% endif %}
 </div>
 </div>
 
    <Button> <a href="{{ path('app_infotrafic_new') }}">Create new</a></Button>
 
+
+   
+   
 
 
 

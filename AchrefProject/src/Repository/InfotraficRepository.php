@@ -38,7 +38,21 @@ class InfotraficRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    public function countLikes(): int
+    {
+        return $this->createQueryBuilder('i')
+            ->select('SUM(i.likes)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 
+    public function countDisLikes(): int
+    {
+        return $this->createQueryBuilder('k')
+            ->select('SUM(k.dislikes)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 //    /**
 //     * @return Infotrafic[] Returns an array of Infotrafic objects
 //     */

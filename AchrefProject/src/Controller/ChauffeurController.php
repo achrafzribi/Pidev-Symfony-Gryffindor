@@ -5,19 +5,26 @@ namespace App\Controller;
 use App\Entity\Chauffeur;
 use App\Form\ChauffeurType;
 use App\Repository\ChauffeurRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/chauffeur')]
 class ChauffeurController extends AbstractController
 {
     #[Route('/back', name: 'app_chauffeur_index_back', methods: ['GET'])]
-    public function indexback(ChauffeurRepository $chauffeurRepository): Response
+    public function indexback(ChauffeurRepository $chauffeurRepository,PaginatorInterface  $paginator,Request  $request): Response
     {
+        $chauffeur = $chauffeurRepository->findAll();
+        $pagination = $paginator->paginate(
+            $chauffeur,
+            $request->query->getInt('page', 1),
+            1
+        );
         return $this->render('chauffeur/index.html.twig', [
-            'chauffeurs' => $chauffeurRepository->findAll(),
+            'chauffeurs' => $pagination,
         ]);
     }
 
@@ -30,6 +37,7 @@ class ChauffeurController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $chauffeurRepository->save($chauffeur, true);
+            $this->addFlash('success', 'chauffeur ajoutée avec succèes!');
 
             return $this->redirectToRoute('app_chauffeur_index_back', [], Response::HTTP_SEE_OTHER);
         }
@@ -56,6 +64,7 @@ class ChauffeurController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $chauffeurRepository->save($chauffeur, true);
+            $this->addFlash('success', 'chauffeur modifiée avec succèes!');
 
             return $this->redirectToRoute('app_chauffeur_index_back', [], Response::HTTP_SEE_OTHER);
         }
@@ -71,6 +80,8 @@ class ChauffeurController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$chauffeur->getId(), $request->request->get('_token'))) {
             $chauffeurRepository->remove($chauffeur, true);
+            $this->addFlash('success', 'chauffeur supprimée avec succèes!');
+
         }
 
         return $this->redirectToRoute('app_chauffeur_index_back', [], Response::HTTP_SEE_OTHER);
