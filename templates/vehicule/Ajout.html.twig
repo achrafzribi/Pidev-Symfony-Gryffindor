@@ -1,0 +1,46 @@
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}})}}
+              <div class="row">
+                <div class="col-md-6 form-group">
+                 {{ form_label(form.modele) }}
+        {{ form_widget(form.modele,{'attr': {'class': 'form-control', 'placeholder': 'Enter your Lastname'}}) }}
+        {{ form_errors(form.modele) }}
+                </div>
+                 <div class="col-md-6 form-group">
+                     {{ form_label(form.marque) }}
+        {{ form_widget(form.marque,{'attr': {'class': 'form-control', 'placeholder': 'Enter your Firstname'}}) }}
+        {{ form_errors(form.marque) }}
+                </div>
+              </div>
+               <div class="form-group mt-3">
+                       {{ form_label(form.type) }}
+                      
+        {{ form_widget(form.type,{'attr': {'class': 'form-control', 'placeholder': 'Enter your reclamation Type'}}) }}
+
+        {{ form_errors(form.type) }}
+                
+              </div>
+              <div class="form-group mt-3">
+                   {{ form_label(form.idc) }}
+        {{ form_widget(form.idc,{'attr': {'class': 'form-control', 'placeholder': 'Enter your Number'}}) }}
+        {{ form_errors(form.idc) }}
+                </div>
+              <div class="form-group mt-3">
+                   <label>nombre de place</label>
+        {{ form_widget(form.nbplaces,{'attr': {'class': 'form-control', 'placeholder': 'nombre de place'}}) }}
+        {{ form_errors(form.nbplaces) }}
+                </div>
+             
+              <div class="form-group mt-3">
+               {{ form_label(form.immatriculation) }}
+        {{ form_widget(form.immatriculation,{'attr': {'class': 'form-control', 'placeholder': 'Enter your Reclamation'}}) }}
+        {{ form_errors(form.immatriculation) }}
+              </div>
+               <div class="text-center" style="margin-top: 20px;" >
+                  {{form_widget(form.save,{'attr': { 'style': 'padding: 10px 20px;', 'placeholder': 'Enter your name'}})}}
+                   
+      
+ 
+
+                  </div>
+    {{ form_end(form) }}
+           

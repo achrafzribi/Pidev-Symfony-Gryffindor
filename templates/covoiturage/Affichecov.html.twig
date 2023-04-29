@@ -1,0 +1,63 @@
+ <input type="text" class="form-control" placeholder="Recherche" id="rech">
+                <br>
+                <script>
+        function filterTable() {
+            const filter = document.getElementById('rech').value.toUpperCase();
+            const rows = document.querySelectorAll('table tr');
+            for (let i = 1; i < rows.length; i++) {
+                const cols = rows[i].querySelectorAll('td');
+                let visible = false;
+                for (let j = 0; j < cols.length; j++) {
+                    const cell = cols[j];
+                    if (cell.innerText.toUpperCase().indexOf(filter) > -1) {
+                        visible = true;
+                        break;
+                    }
+                }
+                rows[i].style.display = visible ? '' : 'none';
+            }
+        }
+        document.getElementById('rech').addEventListener('keyup', filterTable);
+    </script>
+<table border="2" style="" class="table table-borderless datatable" >
+    <tr>
+    
+        <th>Depart</th>
+        <th>Destination</th>
+        <th>date covoiturage</th>
+        <th>idc</th>
+       <th>prix</th>
+        <th>nbre de place</th>
+        <th>vehicule</th>
+          <th>Action</th>
+       
+      
+    </tr>
+   {% for v in covs%}
+    <tr>
+       
+        <td>{{v.depart}}</td>
+        <td>{{v.destination}}</td>
+        <td>{{v.datecovoiturage.format('Y-m-d')}}</td>
+        <td>{{v.idc}}</td>
+        <td>{{v.prix}}</td>
+        <td>{{v.nbrplace}}</td>
+        <td>{{v.vehicule}}</td>
+        <td>
+       
+      
+      
+        <a href="{{path('modifc',{'id':v.id})}}" > update</a>
+       
+       
+           <form action="{{path('daletecov',{'id':v.id})}}" method="">
+              <button type="submit">Delete</button>
+            </form>
+        </td>
+     
+      
+    </tr>
+
+    {% endfor %}
+</table>
+      {{ knp_pagination_render(covs, '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig') }}

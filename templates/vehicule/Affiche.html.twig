@@ -1,0 +1,71 @@
+
+ {% block body %}
+ <input type="text" class="form-control" placeholder="Recherche" id="rech">
+                <br>
+                <script>
+        function filterTable() {
+            const filter = document.getElementById('rech').value.toUpperCase();
+            const rows = document.querySelectorAll('table tr');
+            for (let i = 1; i < rows.length; i++) {
+                const cols = rows[i].querySelectorAll('td');
+                let visible = false;
+                for (let j = 0; j < cols.length; j++) {
+                    const cell = cols[j];
+                    if (cell.innerText.toUpperCase().indexOf(filter) > -1) {
+                        visible = true;
+                        break;
+                    }
+                }
+                rows[i].style.display = visible ? '' : 'none';
+            }
+        }
+        document.getElementById('rech').addEventListener('keyup', filterTable);
+    </script>
+       <a href="{{ path('pdf_all_reponses') }}" class="btn btn-primary view-inv-btn">Telecharger la liste réponses</a>
+
+<table border="2" style="" class="table table-borderless datatable" >
+    <tr>
+    
+        <th>modele</th>
+        <th>Marque</th>
+        <th>type</th>
+        <th>idc</th>
+       <th>nb_places</th>
+        <th>imatriculation</th>
+        <th>Action</th>
+       
+      
+    </tr>
+   {% for v in vss%}
+    <tr>
+       
+        <td>{{v.modele}}</td>
+        <td>{{v.marque}}</td>
+        <td>{{v.type}}</td>
+        <td>{{v.idc}}</td>
+        <td>{{v.nbplaces}}</td>
+        <td>{{v.immatriculation}}</td>
+        <td>
+       
+      
+      
+        <a href="{{path('MMM',{'id':v.id})}}" > update</a>
+       
+       
+           <form action="{{path('AAA',{'id':v.id})}}" method="">
+              <button type="submit">Delete</button>
+            </form>
+
+                        <a href="{{ path('pdfff',{'id':v.id}) }}">Telecharger PDF</a>
+
+        </td>
+     
+      
+    </tr>
+
+    {% endfor %}
+</table>
+
+       {{ knp_pagination_render(vss, '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig') }}
+
+ {% endblock %}

@@ -1,0 +1,51 @@
+{% block title %}  {% endblock %}
+
+{% block body %}
+
+
+
+<style>
+    /* Les descendants de rang impair sont stylés avec une couleur     */
+    tbody:nth-child(odd)  { background-color : #8d8a8a;}
+    /* Les descendants de rang pair sont stylés avec une autre couleur */
+    tbody:nth-child(even) { background-color : #6e9ff5; }
+    th { background-color : #273781; padding:1.2em; }
+    td { padding:0.6em; }
+    logo {
+        width: 1cm;
+        height :1cm;
+    }
+</style>
+
+<table class="table" align="center">
+    <thead>
+    <tr>
+    <th>modele</th>
+        <th>Marque</th>
+        <th>type</th>
+        <th>id conducteur</th>
+       <th>nb_places</th>
+        <th>imatriculation</th>
+       
+      
+    </tr>
+    </thead>
+    <tbody>
+         {% for v in vss%}
+    <tr>
+       
+        <td>{{v.modele}}</td>
+        <td>{{v.marque}}</td>
+        <td>{{v.type}}</td>
+        <td>{{v.idc}}</td>
+        <td>{{v.nbplaces}}</td>
+        <td>{{v.immatriculation}}</td>
+        
+               
+            </tr>
+        {% endfor %}
+        </tbody>
+</table>
+    {% endblock %}
+
+

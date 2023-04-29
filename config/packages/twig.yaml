@@ -1,0 +1,10 @@
+twig:
+    default_path: '%kernel.project_dir%/templates'
+
+when@test:
+    twig:
+        strict_variables: true
+        twig:
+    paths:
+        '%kernel.project_dir%/vendor/knplabs/knp-paginator-bundle/src/Resources/views': KnpPaginator
+
