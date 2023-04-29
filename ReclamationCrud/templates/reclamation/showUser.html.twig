@@ -1,0 +1,133 @@
+{% extends 'base-front.html.twig' %}
+{% block body %}
+<!DOCTYPE html>
+
+<html lang="en" class="default-style layout-fixed layout-navbar-fixed">
+<!-- Mirrored from html.phoenixcoded.net/empire/bootstrap/default/school-parents.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 Mar 2023 20:55:42 GMT -->
+<head>
+ <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description"
+        content="Empire is one of the unique admin template built on top of Bootstrap 4 framework. It is easy to customize, flexible code styles, well tested, modern & responsive are the topmost key factors of Empire Dashboard Template" />
+    <meta name="keywords" content="bootstrap admin template, dashboard template, backend panel, bootstrap 4, backend template, dashboard template, saas admin, CRM dashboard, eCommerce dashboard">
+    <meta name="author" content="Codedthemes" />
+    <link rel="icon" type="image/x-icon" href="{{asset('back-office/img/favicon.ico')}}">
+{% block css%}
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+    <!-- Icon fonts -->
+    <link rel="stylesheet" href="{{asset('back-office/fonts/fontawesome.css')}}">
+    <link rel="stylesheet" href="{{asset('back-office/fonts/ionicons.css')}}">
+    <link rel="stylesheet" href="{{asset('back-office/fonts/linearicons.css')}}">
+    <link rel="stylesheet" href="{{asset('back-office/fonts/open-iconic.css')}}">
+    <link rel="stylesheet" href="{{asset('back-office/fonts/pe-icon-7-stroke.css')}}">
+    <link rel="stylesheet" href="{{asset('back-office/fonts/feather.css')}}">
+
+    <!-- Core stylesheets -->
+    <link rel="stylesheet" href="{{asset('back-office/css/bootstrap-material.css')}}">
+    <link rel="stylesheet" href="{{asset('back-office/css/shreerang-material.css')}}">
+    <link rel="stylesheet" href="{{asset('back-office/css/uikit.css')}}">
+
+    <!-- Libs -->
+    <link rel="stylesheet" href="{{asset('back-office/libs/perfect-scrollbar/perfect-scrollbar.css')}}">
+    <!-- Page -->
+    <link rel="stylesheet" href="{{asset('back-office/css/pages/users.css')}}">
+{% endblock %}
+
+</head>
+                <!-- [ Layout content ] Start -->
+                <div class="layout-content">
+
+                    <!-- [ content ] Start -->
+                    <div class="container-fluid flex-grow-1 container-p-y">
+                        <h4 class="font-weight-bold py-3 mb-0">Reclamation </h4>
+
+                        <div class="media align-items-center py-3 mb-3">
+                            <img src="assets/img/avatars/5-small.png" alt="" class="d-block ui-w-100 rounded-circle">
+                            <div class="media-body ml-4">
+                                <h4 class="font-weight-bold mb-0">{{ reclamation.nom }}<span class="text-muted font-weight-normal"></span></h4>
+                                <div class="text-muted mb-2">ID: {{ reclamation.id }}</div>
+                                <a href="{{ path('app_reclamation_indexFront') }}">back to list</a>
+                                {{ include('reclamation/_delete_formFront.html.twig') }}
+                            
+                                </a>
+                            </div>
+                        </div>
+    <div class="card mb-4">
+        <div class="card-body">
+    <table class="table user-view-table m-0">
+        <tbody>
+            <tr>
+                <th>Description</th>
+                <td>{{ reclamation.description }}</td>
+            </tr>
+            <tr>
+                <th>Date_creation</th>
+                <td>{{ reclamation.dateCreation ? reclamation.dateCreation|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>effectue sur</th>
+                <td>{{ reclamation.type ? reclamation.type|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>effectue sur le nom</th>
+                <td>{{ reclamation.nom }}</td>
+            </tr>
+            <tr>
+                <th>effectue sur l'email</th>
+                <td>{{ reclamation.email }}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+                        </div>
+                                            </div>
+                    <!-- [ content ] End -->
+<!-- [ Layout footer ] Start -->
+                    <nav class="layout-footer footer footer-light">
+                        <div class="container-fluid d-flex flex-wrap justify-content-between text-center container-p-x pb-3">
+                            <div class="pt-3">
+                                <span class="float-md-right d-none d-lg-block">&copy; Exclusive on Themeforest | Hand-crafted &amp; Made with <i class="fas fa-heart text-danger mr-2"></i></span>
+                            </div>
+                            <div>
+                                <a href="javascript:" class="footer-link pt-3">About Us</a>
+                                <a href="javascript:" class="footer-link pt-3 ml-4">Help</a>
+                                <a href="javascript:" class="footer-link pt-3 ml-4">Contact</a>
+                                <a href="javascript:" class="footer-link pt-3 ml-4">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- [ Layout footer ] End -->
+
+                </div>
+                <!-- [ Layout content ] Start -->
+
+            </div>
+            <!-- [ Layout container ] End -->
+        </div>
+        <!-- Overlay -->
+        <div class="layout-overlay layout-sidenav-toggle"></div>
+    </div>
+    <!-- [ Layout wrapper ] end -->
+
+    {% block js %}
+    <!-- Core scripts -->
+    <script src="{{asset('back-office/js/pace.js')}}"></script>
+    <script src="{{asset('back-office/js/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{asset('back-office/libs/popper/popper.js')}}"></script>
+    <script src="{{asset('back-office/js/bootstrap.js')}}"></script>
+    <script src="{{asset('back-office/js/sidenav.js')}}"></script>
+    <script src="{{asset('back-office/js/layout-helpers.js')}}"></script>
+    <script src="{{asset('back-office/js/material-ripple.js')}}"></script>
+
+    <!-- Libs -->
+    <script src="{{asset('back-office/libs/perfect-scrollbar/perfect-scrollbar.js')}}"></script>
+
+    <!-- Demo -->
+    <script src="{{asset('back-office/js/demo.js')}}"></script>
+    {% endblock %}
+ <!-- Mirrored from html.phoenixcoded.net/empire/bootstrap/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 Mar 2023 20:46:47 GMT -->
+ </html>
+{% endblock %}
