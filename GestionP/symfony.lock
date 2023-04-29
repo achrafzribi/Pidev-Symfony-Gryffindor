@@ -1,4 +1,7 @@
 {
+    "cmen/google-charts-bundle": {
+        "version": "5.0.1"
+    },
     "doctrine/annotations": {
         "version": "2.0",
         "recipe": {
@@ -35,6 +38,24 @@
             "./migrations/.gitignore"
         ]
     },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v6.2.0"
+    },
+    "mercuryseries/flashy-bundle": {
+        "version": "v5.1.0"
+    },
+    "nzo/url-encryptor-bundle": {
+        "version": "6.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "6.0",
+            "ref": "42101a4fa1a537375c079e952e75338d017d6dae"
+        },
+        "files": [
+            "./config/packages/nzo_encryptor.yaml"
+        ]
+    },
     "phpunit/phpunit": {
         "version": "9.6",
         "recipe": {
@@ -60,6 +81,9 @@
         "files": [
             "./config/packages/sensio_framework_extra.yaml"
         ]
+    },
+    "symfony-cmf/routing-bundle": {
+        "version": "3.0.1"
     },
     "symfony/console": {
         "version": "6.0",
@@ -238,6 +262,15 @@
             "./config/packages/twig.yaml",
             "./templates/base.html.twig"
         ]
+    },
+    "symfony/twilio-notifier": {
+        "version": "6.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "5.0",
+            "ref": "eb697fe6a90b4972a4a544b4f7ea56520d29d9e9"
+        }
     },
     "symfony/validator": {
         "version": "6.0",

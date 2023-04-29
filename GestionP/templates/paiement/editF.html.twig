@@ -1,6 +1,6 @@
 {% extends 'base-front.html.twig' %}
 
-{% block title %}New Payment{% endblock %}
+{% block title %}New Paiement{% endblock %}
 
 {% block body %}
 <!DOCTYPE html>
@@ -35,17 +35,19 @@
 </head>
 <body>
 <div class="container">
+<div>h</div>
+<div>h</div>
+<div>h</div>
+    <h2>Edit Paiement</h2>
 
-<br>
-<br>
-<br>
-<h2>creer un paiement</h2>
-    {{ include('paiement/_form.html.twig') }}
-    
+     {{ include('paiement/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_home_front') }}">back</a>
+     <a href="{{ path('app_paiement_show1', {'id': paiement.id}) }}">back to list</a>
+
+     
     </div>
-    </body>
+    </div>
+</body>
 <data-spy="scroll" data-target=".inner-link" data-offset="60">
     <main>
         <div class="znav-container znav-white znav-fixed border-bottom color-10" id="znav-container">
@@ -66,8 +68,8 @@
                                 <ul class="dropdown">
                                     <li><a href="JavaScript:void(0)">Paiement</a>
                                         <ul class="dropdown dropdown-push-left">
-                                            <li><a href="{{ path('app_paiement_new') }}">Ajouter paiement</a></li>
-                                            <li><a href="{{ path('app_paiement_indexF') }}">Consulter Paiement</a></li>
+                                            <li><a href="{{ path('app_paiement_new') }}">Ajouter Paiement</a></li>
+                                            <li><a href="{{ path('app_paiement_index') }}">Consulter Paiement</a></li>
                                         </ul>
                                     </li>
                                 </ul>

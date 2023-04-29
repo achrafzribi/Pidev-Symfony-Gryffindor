@@ -6,6 +6,20 @@ kernel:
     resource: ../src/Kernel.php
     type: annotation
 
+payment_statistics:
+    path: /payment/statistics
+    controller: App\Controller\PaiementController::statistics
+
+app_paiement_index:
+    path: /back
+    controller: App\Controller\PaiementController::index
+    methods: [GET]
+
+app_paiement_indexF:
+    path: /front
+    controller: App\Controller\PaiementController::index1
+    methods: [GET]
+
 app_paiement_new:
     path: /new
     controller: App\Controller\PaiementController::new
@@ -39,6 +53,12 @@ dashboards_crypto:
     controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
     defaults:
         template: 'dashboards_crypto.html.twig'
+
+dashboards_project:
+    path: /dashboards/project
+    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+    defaults:
+        template: 'dashboards_project.html.twig'
 
 client_page:
     path: /secondTemp/index

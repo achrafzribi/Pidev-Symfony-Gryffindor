@@ -6,8 +6,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 class TryingAdminController extends AbstractController
 {
+    #[Route('/home/back', name: 'app_home_back')]
+    public function index3(): Response
+    {
+        return $this->render('base-back.html.twig', [
+            'controller_name' => 'HomeBackController',
+        ]);
+    }
+    #[Route('/home/front', name: 'app_home_front')]
+    public function index4(): Response
+    {
+        return $this->render('base-front.html.twig', [
+            'controller_name' => 'HomeFrontController',
+        ]);
+    }
+
     #[Route('/trying/admin', name: 'app_trying_admin')]
     public function index(): Response
     {
@@ -29,4 +45,5 @@ class TryingAdminController extends AbstractController
             'controller_name' => 'admin1',
         ]);
     }
+    
 }

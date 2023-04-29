@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\Entity\PaiementMethod;
 use App\Form\PaiementMethodType;
 use App\Repository\PaiementMethodRepository;
@@ -40,7 +41,7 @@ public function adminHome(Request $request): Response
     // Render the 'dashboards_crypto' template with an empty form
     $paiementMethod = new PaiementMethod();
     $form = $this->createForm(PaiementMethodType::class, $paiementMethod);
-    $role = 'cli';
+    $role = 'client';
     if ($role === 'client'){
         return $this->render('SecTemp/page-starter.html.twig', [
             'form' => $form->createView(),
@@ -75,34 +76,26 @@ public function adminHome(Request $request): Response
     } */
 
     #[Route('/new', name: 'app_pay_method_new', methods: ['GET', 'POST'])]
-#[Template('SecTemp/page-starter.html.twig')]
+
 public function new(Request $request, PaiementMethodRepository $paiementMethodRepository): Response
 {
     $paiementMethod = new PaiementMethod();
     $form = $this->createForm(PaiementMethodType::class, $paiementMethod);
     $form->handleRequest($request);
-    $role = 'cli';
+    
     if ($form->isSubmitted() && $form->isValid()) {
         $paiementMethodRepository->save($paiementMethod, true);
 
-        if ($role === 'client') {
-            return $this->redirectToRoute('client_page', [], Response::HTTP_SEE_OTHER);
-        } else {
-            return $this->redirectToRoute('admin_homepage', [], Response::HTTP_SEE_OTHER);
-        }
+            return $this->redirectToRoute('app_pay_method_show', ['id' => $paiementMethod->getId()], Response::HTTP_SEE_OTHER);
+       
     }
 
-    if ($role === 'client') {
-        return $this->renderForm('SecTemp/page-starter.html.twig', [
+    
+        return $this->renderForm('pay_method/new.html.twig', [
             'paiement_method' => $paiementMethod,
             'form' => $form,
         ]);
-    } else {
-        return $this->renderForm('dashboards_crypto.html.twig', [
-            'paiement_method' => $paiementMethod,
-            'form' => $form,
-        ]);
-    }
+    
 }
 
     #[Route('/{id}', name: 'app_pay_method_show', methods: ['GET'])]

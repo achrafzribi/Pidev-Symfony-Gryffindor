@@ -1,0 +1,25 @@
+
+<form id="payment-form" action="{{ path('app_paiement_newapi',{'id':id, 'amount' :Amount }) }}" method="POST">
+{{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+    
+    {{ form_errors(form,{'attr':{'class':'text-danger'}}) }}
+    
+        {{ form_row(form.cardNumber) }}
+        {{ form_row(form.expirationDate) }}
+        {{ form_row(form.cvc) }}
+   
+   
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+</form>
+
+
+   
+   
+   
+  
+
+
+
+   
+

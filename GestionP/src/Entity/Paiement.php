@@ -9,6 +9,11 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: PaiementRepository::class)]
 class Paiement
 {
+
+    public $cardNumber;
+    public $expirationDate;
+    public $cvc;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -29,6 +34,9 @@ class Paiement
     #[ORM\ManyToOne(targetEntity: PaiementMethod::class)]
     #[ORM\JoinColumn(name: "M_id", referencedColumnName: "id", nullable: false)]
     private ?PaiementMethod $paymentMethod = null;
+
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private $ipAddress;
 
     public function getId(): ?int
     {
@@ -92,5 +100,17 @@ class Paiement
     {
         $this->paymentMethod = $paymentMethod;
         return $this;
+    }
+
+    public function setIpAddress(string $ipAddress): self
+    {
+        $this->ipAddress = $ipAddress;
+
+        return $this;
+    }
+
+    public function getIpAddress(): ?string
+    {
+        return $this->ipAddress;
     }
 }

@@ -1,0 +1,31 @@
+{# payment/statistics.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Payment Statistics by Date</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Total Amount</th>
+                <th>Average Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stat in paymentStats %}
+                <tr>
+                    <td>{{ stat.date }}</td>
+                    <td>{{ stat.totalAmount }}</td>
+                    <td>{{ stat.averageAmount }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {{ knp_pagination_render(paymentStats) }}
+{% endblock %}
+
+
+

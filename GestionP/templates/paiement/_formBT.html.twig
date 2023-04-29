@@ -1,0 +1,17 @@
+
+
+
+
+{% block body %}
+    <h1>Bank Transfer</h1>
+
+<form id="payment-form" action="{{ path('app_paiement_newapiBank',{'id':id, 'amount' :Amount }) }}" method="POST">
+    {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+     {{ form_errors(form,{'attr':{'class':'text-danger'}}) }}
+        {{ form_row(form.accountNumber) }}
+        {{ form_row(form.routingNumber) }}
+       
+         <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
+    </form>
+{% endblock %}

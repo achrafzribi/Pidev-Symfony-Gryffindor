@@ -1,6 +1,6 @@
 {% extends 'base-front.html.twig' %}
 
-{% block title %}New Payment{% endblock %}
+{% block title %}New Reclamation{% endblock %}
 
 {% block body %}
 <!DOCTYPE html>
@@ -33,19 +33,6 @@
     <link href="{{asset('assets2/css/custom.css')}}" rel="stylesheet">
     {% endblock %}
 </head>
-<body>
-<div class="container">
-
-<br>
-<br>
-<br>
-<h2>creer un paiement</h2>
-    {{ include('paiement/_form.html.twig') }}
-    
-
-    <a href="{{ path('app_home_front') }}">back</a>
-    </div>
-    </body>
 <data-spy="scroll" data-target=".inner-link" data-offset="60">
     <main>
         <div class="znav-container znav-white znav-fixed border-bottom color-10" id="znav-container">
@@ -64,10 +51,10 @@
                         <ul class="navbar-nav ml-auto">
                             <li><a href="JavaScript:void(0)">Pages</a>
                                 <ul class="dropdown">
-                                    <li><a href="JavaScript:void(0)">Paiement</a>
+                                    <li><a href="JavaScript:void(0)">Reclamation</a>
                                         <ul class="dropdown dropdown-push-left">
-                                            <li><a href="{{ path('app_paiement_new') }}">Ajouter paiement</a></li>
-                                            <li><a href="{{ path('app_paiement_indexF') }}">Consulter Paiement</a></li>
+                                            <li><a href="{{ path('app_paiement_new') }}">Ajouter Reclamation</a></li>
+                                            <li><a href="{{ path('app_paiement_index') }}">Consulter Reclamation</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -107,5 +94,14 @@
     <!-- Mirrored from prium.github.io/tryposh/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 12 Apr 2023 00:30:42 GMT -->
 
 </html>
+<div class="container">
+<br> 
+<br>
+<br>
+<h3>Ajouter paiement</h3>
+    {{ include('paiement/_formF.html.twig') }}
+    
 
+    <a href="{{ path('app_home_front') }}">back</a>
+    </div>
 {% endblock %}

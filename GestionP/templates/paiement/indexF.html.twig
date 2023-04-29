@@ -1,6 +1,6 @@
 {% extends 'base-front.html.twig' %}
 
-{% block title %}New Payment{% endblock %}
+{% block title %}New Paiement{% endblock %}
 
 {% block body %}
 <!DOCTYPE html>
@@ -33,19 +33,6 @@
     <link href="{{asset('assets2/css/custom.css')}}" rel="stylesheet">
     {% endblock %}
 </head>
-<body>
-<div class="container">
-
-<br>
-<br>
-<br>
-<h2>creer un paiement</h2>
-    {{ include('paiement/_form.html.twig') }}
-    
-
-    <a href="{{ path('app_home_front') }}">back</a>
-    </div>
-    </body>
 <data-spy="scroll" data-target=".inner-link" data-offset="60">
     <main>
         <div class="znav-container znav-white znav-fixed border-bottom color-10" id="znav-container">
@@ -66,8 +53,8 @@
                                 <ul class="dropdown">
                                     <li><a href="JavaScript:void(0)">Paiement</a>
                                         <ul class="dropdown dropdown-push-left">
-                                            <li><a href="{{ path('app_paiement_new') }}">Ajouter paiement</a></li>
-                                            <li><a href="{{ path('app_paiement_indexF') }}">Consulter Paiement</a></li>
+                                            <li><a href="{{ path('app_paiement_new') }}">Ajouter Paiement</a></li>
+                                            <li><a href="{{ path('app_paiement_index') }}">Consulter Paiement</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -76,6 +63,25 @@
                     </div>
                 </nav>
             </div><!-- /.container-->
+            <section class="color-1 background-10 font-1 py-6">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h1 class="fs-3 fs-sm-4 fw-400"><a href="{{ path('app_paiement_new') }}">Add Paiement</a></h1>
+                    </div>
+                </div><!--/.row-->
+            </div><!--/.container-->
+        </section>
+        
+        
+
+        <footer class="background-11 color-1 py-3 fs--1 fw-600">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 font-1">&copy; 2017 POSH &trade; Inc. </div>
+                </div>
+            </div>
+        </footer>
             </main>
             {% block js %}
     <!--  --><!--    JavaScripts--><!--    =============================================-->

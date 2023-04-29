@@ -28,7 +28,7 @@ use Symfony\Component\Validator\Constraints\PositiveOrZero;
 
 
 
-class PaiementType extends AbstractType
+class CreditCardPaymentType extends AbstractType
 {
     private $em;
     public function __construct(EntityManagerInterface $em)
@@ -39,38 +39,14 @@ class PaiementType extends AbstractType
     
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $choices = [
-            'Credit Card' => PaiementMethod::CREDIT_CARD,
-            'Cash' => PaiementMethod::CASH,
-            'Bank Transfer' => PaiementMethod::BANK_TRANSFER,
-        ];
+        
+    
         $builder
-            ->add('Amount', null, [
-                'constraints' => [
-                    new Assert\NotBlank(['message' => 'Type should not be blank :P']),
-                    new PositiveOrZero(['message' => 'Amount should be a positive number or zero']),
-                ]
-            ])
-            ->add('PaiementDate', null, [
-                'constraints' => [
-                    new Assert\NotBlank(['message' => 'Choose a paiement Date']),
-                ]
-            ]) 
-            ->add('Description', null, [
-                'constraints' => [
-                    new Assert\NotBlank(['message' => 'Description should not be blank']),
-                ]
-            ])
-            ->add('paymentMethod', EntityType::class, [
-                'class' => PaiementMethod::class,
-                'choice_label' => 'Type',
-            ] );
-
-            
+          
                 
           
            
-    /*      ->add('cardNumber', TextType::class, [
+         ->add('cardNumber', TextType::class, [
                 'label' => 'Card Number',
                 'required' => false,
                 'constraints' => [
@@ -97,7 +73,7 @@ class PaiementType extends AbstractType
                     new Assert\NotBlank(['message' => 'CVC should not be blank']),
                     new Assert\Length(['min' => 3, 'max' => 4, 'exactMessage' => 'CVC should be between {{ limit }} and {{ limit }} digits']),
                 ]
-            ]); */
+            ]); 
           
 
         

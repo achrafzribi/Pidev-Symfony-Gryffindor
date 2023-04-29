@@ -1,8 +1,3 @@
-{% extends 'base.html.twig' %}
-
-
-
-
 {% block body %}
 <!DOCTYPE html>
 <!-- show admin button show -->
@@ -10,7 +5,7 @@
 <html lang="en" class="default-style layout-fixed layout-navbar-fixed">
 <!-- Mirrored from html.phoenixcoded.net/empire/bootstrap/default/school-parents.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 Mar 2023 20:55:42 GMT -->
 <head>
-{% block title %}Edit PaiementMethod{% endblock %}
+{% block title %}Admin{% endblock %}
  <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
@@ -76,16 +71,14 @@
                             <div>Paiement</div>
                         </a>
                         <ul class="sidenav-menu">
-                              <a href="{{ path('app_paiement_index') }}" class="sidenav-link">
+                            <li class="sidenav-item active">
+                                <a href="{{ path('app_paiement_index') }}" class="sidenav-link">
                                     <div>gestion Paiement</div>
                                 </a>
-                            <li class="sidenav-item active">
-                            <a href="{{ path('app_pay_method_index') }}" class="sidenav-link">
+                            </li>
+                             <a href="{{ path('app_pay_method_index') }}" class="sidenav-link">
                                     <div>gestion Methode paiement</div>
                                 </a>
-                                
-                            </li>
-                            
                         </ul>
                     </li>
                 </ul>
@@ -292,13 +285,13 @@
     <div class="card mb-4">
         <div class="card-body">
    <div class="container">
-      <h1>Edit PaiementMethod</h1>
+    <h2>Edit Paiement</h2>
 
-    {{ include('pay_method/_form.html.twig', {'button_label': 'Update'}) }}
+     {{ include('paiement/deleteformB.html.twig') }}
 
-    <a href="{{ path('app_pay_method_index') }}">back to list</a>
+     <a href="{{ path('app_paiement_index') }}">back to list</a>
 
-    {{ include('pay_method/_delete_form.html.twig') }}
+     {{ include('paiement/_delete_form.html.twig') }}
     </div>
     </div>
                         </div>
