@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+
+use Twilio\Rest\Client;
 use App\Entity\Chauffeur;
 use App\Form\ChauffeurType;
 use App\Repository\ChauffeurRepository;
@@ -38,6 +40,19 @@ class ChauffeurController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $chauffeurRepository->save($chauffeur, true);
             $this->addFlash('success', 'chauffeur ajoutée avec succèes!');
+             // Send a Twilio message to notify about the new chauffeur
+        $accountSid = 'AC7820afe394dbafb7a218a18b491c5c07';
+        $authToken = 'b639280362d5f98e6133536fc3966f35';
+        $twilioNumber = '+12706759631'; // your Twilio phone number
+        $adminNumber = '+21695411518'; // the phone number to receive the message
+        $client = new Client($accountSid, $authToken);
+        $message = $client->messages->create(
+            $adminNumber,
+            array(
+                'from' => $twilioNumber,
+                'body' => 'A new chauffeur has been added!'
+            )
+        );
 
             return $this->redirectToRoute('app_chauffeur_index_back', [], Response::HTTP_SEE_OTHER);
         }
@@ -66,6 +81,20 @@ class ChauffeurController extends AbstractController
             $chauffeurRepository->save($chauffeur, true);
             $this->addFlash('success', 'chauffeur modifiée avec succèes!');
 
+            // Send a Twilio message to notify about the new chauffeur
+        $accountSid = 'AC7820afe394dbafb7a218a18b491c5c07';
+        $authToken = 'b639280362d5f98e6133536fc3966f35';
+        $twilioNumber = '+12706759631'; // your Twilio phone number
+        $adminNumber = '+21695411518'; // the phone number to receive the message
+        $client = new Client($accountSid, $authToken);
+        $message = $client->messages->create(
+            $adminNumber,
+            array(
+                'from' => $twilioNumber,
+                'body' => 'A chauffeur has been modified!'
+            )
+        );
+
             return $this->redirectToRoute('app_chauffeur_index_back', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -81,6 +110,19 @@ class ChauffeurController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$chauffeur->getId(), $request->request->get('_token'))) {
             $chauffeurRepository->remove($chauffeur, true);
             $this->addFlash('success', 'chauffeur supprimée avec succèes!');
+            // Send a Twilio message to notify about the new chauffeur
+        $accountSid = 'AC7820afe394dbafb7a218a18b491c5c07';
+        $authToken = 'b639280362d5f98e6133536fc3966f35';
+        $twilioNumber = '+12706759631'; // your Twilio phone number
+        $adminNumber = '+21695411518'; // the phone number to receive the message
+        $client = new Client($accountSid, $authToken);
+        $message = $client->messages->create(
+            $adminNumber,
+            array(
+                'from' => $twilioNumber,
+                'body' => 'A chauffeur has been deleted!'
+            )
+        );
 
         }
 

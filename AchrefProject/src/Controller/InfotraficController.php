@@ -15,6 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
 
+
 #[Route('/infotrafic')]
 class InfotraficController extends AbstractController
 {
@@ -197,5 +198,42 @@ class InfotraficController extends AbstractController
     // Redirect to the index page after disliking the annonce
     return new RedirectResponse($this->generateUrl('app_infotrafic_index'));
     }
+// METIER AJAX SEARCH :
 
+    /**
+     * @Route("/ajax_search/", name="ajax_search")
+     */
+    public function chercherInfotrafic(\Symfony\Component\HttpFoundation\Request $request)
+{
+    $em = $this->getDoctrine()->getManager();
+    $requestString = $request->query->get('q');
+
+    $x = $em
+        ->getRepository('App\Entity\Infotrafic')
+        ->createQueryBuilder('i')
+        ->where('i.servlib LIKE :str')
+        ->setParameter('str', '%' . $requestString . '%')
+        ->getQuery()
+        ->getResult();
+
+    if (!$x) {
+        $result['Infotrafic']['error'] = "Infotrafic non trouvé 🙁 ";
+    } else {
+        $result['Infotrafic'] = $this->getRealEntities($x);
+    }
+    return new Response(json_encode($result));
+}
+
+public function getRealEntities($infotrafic)
+{
+    $realEntities = [];
+    foreach ($infotrafic as $info) {
+        $realEntities[] = [
+            'id' => $info->getId(),
+            'type' => $info->getType(),
+            'description' => $info->getDescription(),
+        ];
+    }
+    return $realEntities;
+}
 }

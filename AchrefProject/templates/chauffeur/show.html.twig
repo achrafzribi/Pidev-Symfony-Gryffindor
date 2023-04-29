@@ -3,58 +3,56 @@
 {% block title %}Chauffeur{% endblock %}
 
 {% block body %}
-    <center><h1>Chauffeur</h1></center>
-    <div class="d-flex flex-column align-items-center">
-        <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-md-6">
-                  <div class="card-body">
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ chauffeur.id }}</td>
-            </tr>
-            <tr>
-                <th>Nomc</th>
-                <td>{{ chauffeur.nomc }}</td>
-            </tr>
-            <tr>
-                <th>Prenomc</th>
-                <td>{{ chauffeur.prenomc }}</td>
-            </tr>
-            <tr>
-                <th>Numc</th>
-                <td>{{ chauffeur.numc }}</td>
-            </tr>
-            <tr>
-                <th>Adressec</th>
-                <td>{{ chauffeur.adressec }}</td>
-            </tr>
-            <tr>
-                <th>Emailc</th>
-                <td>{{ chauffeur.emailc }}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-</div>
-</div>
-</div>
-
-    <a href="{{ path('app_chauffeur_index_back') }}">back to list</a>
+    <div class="container my-5">
+        <h1 class="text-center mb-5">Chauffeur</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th class="text-center">Id</th>
+                                    <td class="text-center">{{ chauffeur.id }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">Nomc</th>
+                                    <td class="text-center">{{ chauffeur.nomc }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">Prenomc</th>
+                                    <td class="text-center">{{ chauffeur.prenomc }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">Numc</th>
+                                    <td class="text-center">{{ chauffeur.numc }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">Adressec</th>
+                                    <td class="text-center">{{ chauffeur.adressec }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">Emailc</th>
+                                    <td class="text-center">{{ chauffeur.emailc }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a href="{{ path('app_chauffeur_index_back') }}" class="btn btn-secondary mt-4">Back to list</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <style>
         table {
-            margin-top: 0.2rem;
-            border: 4px solid black;
-    
+            margin-top: 1rem;
         }
-        th, td,tr {
-            border: 4px solid black;
+        th, td {
+            border: 2px solid black;
             padding: 0.5rem;
             text-align: center;
-    
-          } 
+            vertical-align: middle;
+        } 
     </style>  
 {% endblock %}

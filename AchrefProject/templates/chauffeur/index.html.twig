@@ -15,7 +15,7 @@
                 <th>Numéro du chauffeur</th>
                 <th>Adresse du chauffeur</th>
                 <th>Email du chauffeur</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -27,15 +27,19 @@
                 <td>{{ chauffeur.numc }}</td>
                 <td>{{ chauffeur.adressec }}</td>
                 <td>{{ chauffeur.emailc }}</td>
-                <td style="display: flex;gap: 10px;">
-                  <Button>  <a href="{{ path('app_chauffeur_show_back', {'id': chauffeur.id}) }}">show</a> </Button> 
-                  <Button>  <a href="{{ path('app_chauffeur_edit_back', {'id': chauffeur.id}) }}">edit</a> </Button> 
-                    {{ include('chauffeur/_delete_form.html.twig') }}
+                <td style="display: flex; gap: 10px;">
+                  <button class="btn btn-sm btn-outline-primary">
+                    <a href="{{ path('app_chauffeur_show_back', {'id': chauffeur.id}) }}" style="text-decoration: none; color: inherit;">Show</a>
+                  </button>
+                  <button class="btn btn-sm btn-outline-secondary">
+                    <a href="{{ path('app_chauffeur_edit_back', {'id': chauffeur.id}) }}" style="text-decoration: none; color: inherit;">Edit</a>
+                  </button>
+                  {{ include('chauffeur/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="7">No records found</td>
             </tr>
         {% endfor %}
         </tbody>
@@ -52,7 +56,10 @@
 {% endif %}
 </div>
 </div>
-    <Button>  <a href="{{ path('app_chauffeur_new_back') }}">Create new</a></Button> 
+    <button class="btn btn-primary mb-4">
+      <a href="{{ path('app_chauffeur_new_back') }}" style="text-decoration: none; color: inherit;">Create New</a>
+    </button>
+
 <style>
     .mt-4 {
         margin-top: 4rem;
@@ -65,12 +72,40 @@
         box-shadow: 0px 0px 10px #9370db; /* purple shadow */
         table-layout: auto;
     }
-    th, td,th {
+    th, td, th {
         border: 1px solid ; /* purple border */
-       padding: 0.5rem;
-       text-align: center;
-       
-      }
-    </style>
+        padding: 0.5rem;
+        text-align: center;
+    }
+    .pagination {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        margin: 1rem 0;
+        padding: 0;
+    }
+    .pagination li {
+        margin-right: 0.5rem;
+    }
+    .pagination li a {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+    .pagination li a:hover {
+        background-color: #0069d9;
+    }
+    .pagination .active a {
+        background-color: #0069d9;
+        border-color: #0062cc;
+    }
+</style>
+
+
+
 
 {% endblock %}

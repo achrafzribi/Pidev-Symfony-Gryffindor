@@ -3,23 +3,51 @@
 {% block title %}Infotrafic{% endblock %}
 
 {% block body %}
-    <h1>Infotrafic</h1>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h1>Infotrafic</h1>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th>Type</th>
+                                    <td>{{ infotrafic.type }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Description</th>
+                                    <td>{{ infotrafic.description }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ path('app_infotrafic_index') }}" class="btn btn-secondary">Back to list</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <table class="table">
-        <tbody>
-            
-            <tr>
-                <th>Type</th>
-                <td>{{ infotrafic.type }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ infotrafic.description }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <style>
+        .card {
+            margin-top: 2rem;
+        }
 
-    <a href="{{ path('app_infotrafic_index') }}">back to list</a>
+        table {
+            margin-top: 1rem;
+        }
 
+        th, td {
+            padding: 0.5rem;
+        }
+
+        th {
+            text-align: left;
+        }
+    </style>
 
 {% endblock %}
