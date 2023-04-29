@@ -1,9 +1,8 @@
-{% extends 'base-front_passager.html.twig' %}
-{% block title %}Edit User{% endblock %}
+{% extends 'base-front_chauffeur.html.twig' %}
+
+{% block title %}Edit Assurance{% endblock %}
 
 {% block body %}
-
-
 <!DOCTYPE html>
 <html lang="en-US">
 <!-- Mirrored from prium.github.io/tryposh/page-settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 12 Apr 2023 00:33:16 GMT -->
@@ -35,10 +34,9 @@
     <link href="{{asset('front-office/css/custom.css')}}" rel="stylesheet">
     {% endblock %}
 </head>
-
-<body data-spy="scroll" data-target=".inner-link" data-offset="60">
+ <data-spy="scroll" data-target=".inner-link" data-offset="60">
     <main>
-        <div class="znav-container" id="znav-container">
+        <div class="znav-container znav-white znav-fixed border-bottom color-10" id="znav-container">
             <div class="container">
                 <nav class="navbar navbar-toggleable-md"><button class="navbar-toggler navbar-toggler-right"
                         type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -48,26 +46,34 @@
                                 <div class="hamburger-inner"></div>
                             </div>
                         </div>
-                    </button><a class="navbar-brand overflow-hidden" href="index.html">TicTacGo</a>
+                    </button><a class="navbar-brand overflow-hidden" href="{{ path('app_home_front_chauffeur') }}"><img
+                            src="{{asset('front-office/images/posh.png')}}" alt='logo' width='80px'></a>
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav ml-auto">
                             <li><a href="JavaScript:void(0)">Settings</a>
                                 <ul class="dropdown">
                                     <li><a href="JavaScript:void(0)">Account</a>
                                         <ul class="dropdown dropdown-push-right">
-                                            <li><a href="{{ path('app_user_show_front', {'id': user.id}) }}">view Profile</a></li>
-                                            <li><a href="{{ path('app_user_edit_front', {'id': user.id}) }}">Account Settings</a></li>
+                                        <li><a href="{{ path('app_user_show_front_chauffeur', {'id': user.id}) }}">view Profile</a></li>
+                                            <li><a href="{{ path('app_user_edit_front_chauffeur', {'id': user.id}) }}">Account Settings</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="{{ path('app_logout') }}">Log out</a></li>
                                 </ul>
                             </li>
+                            <li><a href="JavaScript:void(0)">Assurance</a>
+                                <ul class="dropdown">
+                                    <li><a href="{{ path('app_assurance_new', {'id': user.id}) }}">Ajouter Assurance</a></li>
+{% if assurance is not null and assurance.createdBy is not null %}
+    <li><a href="{{ path('app_assurance_index_chauffeur', {'created_by_id': assurance.createdBy.id}) }}">consulter votre assurance</a></li>
+{% endif %}
+</li>                            </li>
                         </ul>
                     </div>
                 </nav>
             </div><!-- /.container-->
         </div><!-- /.znav-container-->
-        <section class="font-1">
+                <section class="font-1">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-3">
@@ -77,8 +83,8 @@
                                 <h5 class="mb-0 mt-3">{{ user.LastName }}<span class="text-muted font-weight-normal"></span></h5>
                                 <p class="mb-0">{{ user.roles ? user.roles|json_encode : '' }}</p>
                                 <hr class="color-9">
-                                <div class="fs--1 fw-600"><a class="d-block mb-2" href="{{ path('app_user_show_front', {'id': user.id}) }}">Profile</a>
-                                     {{ include('user/_delete_formFront.html.twig') }}
+                                <div class="fs--1 fw-600"><a class="d-block mb-2" href="{{ path('app_user_show_front_chauffeur', {'id': user.id}) }}">Profile</a>
+                            {{ include('assurance/_delete_form.html.twig') }}
                                 </div>
                             </div>
                         </div>
@@ -86,14 +92,14 @@
                     <div class="col-md-9 pl-lg-5">
                         <div class="row">
                             <div class="col-lg-8 mt-5 mt-lg-0">
-                                <h4 class="color-black mb-2">Edit Profile</h4>
+                                <h4 class="color-black mb-2">Edit Assurance</h4>
                             </div>
                         </div>
-                       
-                            {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
-                       
-                        <a href="{{ path('app_home_front_passager') }}"><button type="button" class="btn btn-default">Cancel</button></a>
-                    </div>
+
+    {{ include('assurance/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_home_front_chauffeur') }}"><button type="button" class="btn btn-default">Cancel</button></a>
+ </div>
                 </div><!--/.row-->
             </div><!--/.container-->
         </section>
@@ -140,4 +146,6 @@
 <!-- Mirrored from prium.github.io/tryposh/page-settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 12 Apr 2023 00:33:16 GMT -->
 
 </html>
+
+
 {% endblock %}

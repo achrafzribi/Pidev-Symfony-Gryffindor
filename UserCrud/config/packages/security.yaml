@@ -1,5 +1,5 @@
 security:
-    enable_authenticator_manager: true
+    #enable_authenticator_manager: true
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
@@ -20,11 +20,13 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            lazy: true
-            provider: app_user_provider
+            anonymous: lazy
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
+            two_factor:
+                auth_form_path: 2fa_login    # The route name you have used in the routes.yaml
+                check_path: 2fa_login_check  # The route name you have used in the routes.yaml   
             logout:
                 path: app_logout
                 target: /login
@@ -40,5 +42,7 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/home/back, roles: ROLE_ADMIN }
+        - { path: ^/home/front/passager, roles: ROLE_passager }
+        - { path: ^/home/front/chauffeur, roles: ROLE_chauffeur }
+        - { path: ^/2fa, role: IS_AUTHENTICATED_2FA_IN_PROGRESS }

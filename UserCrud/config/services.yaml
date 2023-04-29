@@ -6,6 +6,9 @@
 parameters:
 
 services:
+    #security.password_encoder:
+        #class: Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface
+        #arguments: ['%kernel.secret%']
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
@@ -22,3 +25,27 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    knp_snappy.pdf:
+        class: Knp\Snappy\Pdf
+        arguments:
+            - '%env(WKHTMLTOPDF_PATH)%'
+            # You may need to modify the path to the wkhtmltopdf binary as necessary.
+            - []
+# Windows configuration
+knp_snappy:
+    pdf:
+        enabled:    true
+        # If you have wkhtmltopdf as an environment variable you don't need to provide the
+        # full path to the executable, use it in the same way as you use in the console
+        #binary:  "wkhtmltopdf"
+        binary: '%env(WKHTMLTOPDF_PATH)%'
+        options:    
+           
+           no-outline: true
+           page-size: LETTER
+           encoding: UTF-8
+
+    image:
+        enabled:    true
+        binary:     '%env(WKHTMLTOIMAGE_PATH)%'
+        options:    []

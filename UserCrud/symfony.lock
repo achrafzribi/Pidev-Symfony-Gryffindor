@@ -38,6 +38,18 @@
             "./migrations/.gitignore"
         ]
     },
+    "knplabs/knp-snappy-bundle": {
+        "version": "1.9",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "1.5",
+            "ref": "c81bdcf4a9d4e7b1959071457f9608631865d381"
+        },
+        "files": [
+            "./config/packages/knp_snappy.yaml"
+        ]
+    },
     "phpunit/phpunit": {
         "version": "9.6",
         "recipe": {
@@ -50,6 +62,35 @@
             "./.env.test",
             "./phpunit.xml.dist",
             "./tests/bootstrap.php"
+        ]
+    },
+    "qipsius/tcpdf-bundle": {
+        "version": "2.0.2"
+    },
+    "scheb/2fa-bundle": {
+        "version": "5.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "5.0",
+            "ref": "0a83961ef50ff91812b229a6f0caf28431d94aec"
+        },
+        "files": [
+            "./config/packages/scheb_2fa.yaml",
+            "./config/routes/scheb_2fa.yaml"
+        ]
+    },
+    "scheb/two-factor-bundle": {
+        "version": "4.18",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "3.16",
+            "ref": "b5789cd9710e2ee555bf361079b991068a0f640b"
+        },
+        "files": [
+            "./config/packages/scheb_two_factor.yaml",
+            "./config/routes/scheb_two_factor.yaml"
         ]
     },
     "sensio/framework-extra-bundle": {
@@ -118,6 +159,15 @@
             "./src/Controller/.gitignore",
             "./src/Kernel.php"
         ]
+    },
+    "symfony/google-mailer": {
+        "version": "5.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "4.4",
+            "ref": "f8fd4ddb9b477510f8f4bce2b9c054ab428c0120"
+        }
     },
     "symfony/mailer": {
         "version": "5.4",

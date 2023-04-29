@@ -97,18 +97,18 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
 
         $user = $token->getUser();
 
-        if(in_array('admin',$user->getRoles(),true)) {
+        if(in_array('ROLE_ADMIN',$user->getRoles(),true)) {
             return new RedirectResponse($this->urlGenerator->generate('app_user_index'));
         }
 
         // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        else if(in_array('passager',$user->getRoles(),true)) {
+        else if(in_array('ROLE_passager',$user->getRoles(),true)) {
         //return new RedirectResponse($this->urlGenerator->generate('app_user_show'));
-        return new RedirectResponse($this->urlGenerator->generate('app_home_front', ['id' => $user->getId()]));
+        return new RedirectResponse($this->urlGenerator->generate('app_home_front_passager', ['id' => $user->getId()]));
         }
-        else if(in_array('chauffeur',$user->getRoles(),true)) {
+        else if(in_array('ROLE_chauffeur',$user->getRoles(),true)) {
             //return new RedirectResponse($this->urlGenerator->generate('app_user_new'));
-            return new RedirectResponse($this->urlGenerator->generate('app_home_front', ['id' => $user->getId()]));
+            return new RedirectResponse($this->urlGenerator->generate('app_home_front_chauffeur', ['id' => $user->getId()]));
             }
     }
 

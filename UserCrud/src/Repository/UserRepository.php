@@ -8,6 +8,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * @extends ServiceEntityRepository<User>
@@ -55,6 +56,23 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
         $this->save($user, true);
     }
+
+    public function findByEmail(string $email): QueryBuilder
+{
+    $qb = $this->createQueryBuilder('u');
+    $qb->where('u.email = :email')
+       ->setParameter('email', $email);
+    return $qb;
+}
+
+    public function findAllOrderedByNameASC($orderBy = 'FirstName', $orderDirection = 'ASC')
+{
+    $qb = $this->createQueryBuilder('u')
+        ->orderBy('u.' . $orderBy, $orderDirection);
+
+    return $qb->getQuery()->getResult();
+}
+
 
 //    /**
 //     * @return User[] Returns an array of User objects

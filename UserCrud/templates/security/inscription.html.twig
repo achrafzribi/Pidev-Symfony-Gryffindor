@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-back.html.twig' %}
 
 {% block title %}Sign UP!{% endblock %}
 
@@ -9,7 +9,7 @@
 
 
 <!-- Mirrored from html.phoenixcoded.net/empire/bootstrap/default/pages_authentication_register-v2.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 Mar 2023 20:57:06 GMT -->
-<head>
+{% block header %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
@@ -39,7 +39,7 @@
     <!-- Page -->
     <link rel="stylesheet" href="{{asset('back-office/css/pages/authentication.css')}}">
     {% endblock %}
-</head>
+{% endblock %}
 
     <!-- [ Preloader ] Start -->
     <div class="page-loader">

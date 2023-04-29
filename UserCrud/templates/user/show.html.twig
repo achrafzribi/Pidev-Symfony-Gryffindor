@@ -53,7 +53,7 @@
                 <!-- Brand demo (see assets/css/demo/demo.css) -->
                 <div class="app-brand demo">
                     <span class="app-brand-logo demo">
-                        <img src="{{ asset('back-office/img/logo.png') }}" alt="Brand Logo" class="img-fluid">
+                        <img src="{{asset('front-office/images/posh.png')}}" alt='logo' width='60px'>
                     </span>
                     <a href="{{ path('app_home_back') }}" class="app-brand-text demo sidenav-text font-weight-normal ml-2">TicTacGo</a>
                     <a href="javascript:" class="layout-sidenav-toggle sidenav-link text-large ml-auto">
@@ -75,6 +75,20 @@
                             <li class="sidenav-item active">
                                 <a href="{{ path('app_user_index') }}" class="sidenav-link">
                                     <div>Account settings</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidenav-header small font-weight-semibold">Details</li>
+                    <li class="sidenav-item">
+                        <a href="javascript:" class="sidenav-link sidenav-toggle">
+                            <i class="sidenav-icon feather icon-users"></i>
+                            <div>Assurances</div>
+                        </a>
+                        <ul class="sidenav-menu">
+                            <li class="sidenav-item active">
+                                <a href="{{ path('app_assurance_index') }}" class="sidenav-link">
+                                    <div>Assurance list</div>
                                 </a>
                             </li>
                         </ul>
@@ -287,6 +301,9 @@
                                 <h4 class="font-weight-bold mb-0">{{ user.LastName }}<span class="text-muted font-weight-normal"></span></h4>
                                 <div class="text-muted mb-2">ID: {{ user.id }}</div>
                                 <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-primary btn-sm">Edit</a>&nbsp;
+                                <div class="media-body ml-4">
+                                <a href="{{ path('app_pdf', {'id': user.id}) }}">PDF</a>
+                                </div>
                                 <a href="{{ path('app_user_index') }}">back to list</a>
                                 {{ include('user/_delete_form.html.twig') }}
                             

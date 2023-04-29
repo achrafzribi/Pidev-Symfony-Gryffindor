@@ -1,3 +1,5 @@
+{% extends 'base-back.html.twig' %}
+
 {% block title %}Edit User{% endblock %}
 
 {% block body %}
@@ -55,7 +57,7 @@
                 <!-- Brand demo (see assets/css/demo/demo.css) -->
                 <div class="app-brand demo">
                     <span class="app-brand-logo demo">
-                        <img src="{{ asset('back-office/img/logo.png') }}" alt="Brand Logo" class="img-fluid">
+                        <img src="{{asset('front-office/images/posh.png')}}" alt='logo' width='60px'>
                     </span>
                     <a href="{{ path('app_home_back') }}" class="app-brand-text demo sidenav-text font-weight-normal ml-2">TicTacGo</a>
                     <a href="javascript:" class="layout-sidenav-toggle sidenav-link text-large ml-auto">
@@ -78,6 +80,20 @@
                             <li class="sidenav-item active">
                                 <a href="{{ path('app_user_index') }}" class="sidenav-link">
                                     <div>Account settings</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidenav-header small font-weight-semibold">Details</li>
+                    <li class="sidenav-item">
+                        <a href="javascript:" class="sidenav-link sidenav-toggle">
+                            <i class="sidenav-icon feather icon-users"></i>
+                            <div>Assurances</div>
+                        </a>
+                        <ul class="sidenav-menu">
+                            <li class="sidenav-item active">
+                                <a href="{{ path('app_assurance_index') }}" class="sidenav-link">
+                                    <div>Assurance list</div>
                                 </a>
                             </li>
                         </ul>

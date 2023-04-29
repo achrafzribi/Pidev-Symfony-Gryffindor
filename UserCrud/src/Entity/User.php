@@ -9,9 +9,13 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use DateTimeInterface;
+use Scheb\TwoFactorBundle\Model\Google\TwoFactorInterface;
+use App\Entity\Assurance;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFactorInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'AUTO')]
@@ -45,6 +49,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     )]
     private ?string $password = null;
 
+    #[Assert\NotBlank(groups: ["Registration"])]
+    #[Assert\Length(
+        min: 6,
+        max: 4096,
+        minMessage: 'Your password must be at least {{ limit }} characters long.',
+        groups: ["Registration"]
+    )]
+private ?string $plainPassword = null;
+
+#[ORM\PostLoad()]
+public function onPostLoad(): void
+{
+    $this->plainPassword = null;
+}
+
+#[ORM\PrePersist(), ORM\PreUpdate()]
+public function onPrePersist(): void
+{
+    if ($this->plainPassword) {
+        $this->password = password_hash($this->plainPassword, PASSWORD_BCRYPT);
+    }
+}
+
     #[ORM\Column]
     #[Assert\NotBlank(message: 'phone number should not be Empty.')]
     #[Assert\Positive]
@@ -66,7 +93,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\NotBlank(message: 'Gender should not be Empty.')]
     private ?string $gender = null;
 
-  
+    #[ORM\Column(length: 180, nullable: true)]
+    private ?string $reset_token = null;
+
+    #[ORM\Column(name:'googleAuthenticatorSecret', type: 'string', nullable: true)]
+    private $googleAuthenticatorSecret;
+
+    #[ORM\OneToMany(targetEntity: Assurance::class, mappedBy: 'user')]
+    private $assurances;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -215,5 +250,76 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getResetToken(): ?string
+    {
+        return $this->reset_token;
+    }
+
+    public function setResetToken(?string $reset_token): self
+    {
+        $this->reset_token = $reset_token;
+
+        return $this;
+    }
+    public function isGoogleAuthenticatorEnabled(): bool
+    {
+        return $this->googleAuthenticatorSecret ? true : false;
+    }
+
+    public function getGoogleAuthenticatorUsername(): string
+    {
+        return $this->email;
+    }
+
+    public function getGoogleAuthenticatorSecret(): ?string
+    {
+        return $this->googleAuthenticatorSecret;
+    }
+
+    public function setGoogleAuthenticatorSecret(?string $googleAuthenticatorSecret): void
+    {
+        $this->googleAuthenticatorSecret = $googleAuthenticatorSecret;
+    }
+
+    public function __construct()
+    {
+        $this->assurances = new ArrayCollection();
+    }
+
+    public function getAssurance(): Collection
+    {
+        return $this->assurance;
+    }
+
+    public function addAssurance(Assurance $assurance): self
+    {
+        if (!$this->assurance->contains($assurance)) {
+            $this->assurance[] = $assurance;
+            $assurance->setCreatedBy($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAssurance(Assurance $assurance): self
+    {
+        if ($this->assurance->removeElement($assurance)) {
+            // set the owning side to null (unless already changed)
+            if ($assurance->getCreatedBy() === $this) {
+                $assurance->setCreatedBy(null);
+            }
+        }
+
+        return $this;
+    }
   
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(?string $plainPassword): void
+    {
+        $this->plainPassword = $plainPassword;
+    }
 }

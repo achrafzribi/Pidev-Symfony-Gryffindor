@@ -24,8 +24,8 @@ class UserType extends AbstractType
                 'multiple' => false,
                 'expanded' => false,
                 'choices' => [
-                    'passager' => 'passager',
-                    'chauffeur' => 'chauffeur',
+                    'passager' => 'ROLE_passager',
+                    'chauffeur' => 'ROLE_chauffeur',
 
                 ],
             ])
