@@ -1,3 +1,15 @@
+ {% extends 'baseFront.html.twig' %}
+
+{% block title %}Infotrafic index{% endblock %}
+
+{% block body %}
+
+ <br>
+  <br>
+   <br>
+    <br>
+     <br>
+
 {% if app.flashes('success') is not empty %}
     <div class="alert alert-success">
         {% for message in app.flashes('success') %}
@@ -10,12 +22,12 @@
               <div class="row">
                 <div class="col-md-6 form-group">
                  {{ form_label(form.depart) }}
-        {{ form_widget(form.depart,{'attr': {'class': 'form-control', 'placeholder': 'Enter your Lastname'}}) }}
+        {{ form_widget(form.depart,{'attr': {'class': 'form-control', 'placeholder': 'vous allez ou?'}}) }}
         {{ form_errors(form.depart) }}
                 </div>
                  <div class="col-md-6 form-group">
                      {{ form_label(form.destination) }}
-        {{ form_widget(form.destination,{'attr': {'class': 'form-control', 'placeholder': 'Enter your Firstname'}}) }}
+        {{ form_widget(form.destination,{'attr': {'class': 'form-control', 'placeholder': 'Vous allez d ou ?'}}) }}
         {{ form_errors(form.destination) }}
                 </div>
               </div>
@@ -57,3 +69,34 @@
                   </div>
     {{ form_end(form) }}
            
+
+{% endblock %}
+
+{% block vide %}
+{% endblock %}
+ 
+ 
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

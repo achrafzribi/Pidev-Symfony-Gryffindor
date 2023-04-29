@@ -24,6 +24,12 @@ class CovoiturageController extends AbstractController
         ]);
     }
 
+    #[Route('/front', name: 'app_front')]
+    public function indexfront(): Response
+    {
+        return $this->render('baseFront.html.twig');
+    }
+
     #[Route('/covoiturage/Affiche',name:'Aff')]
     function Affiche(CovoiturageRepository $repo, PaginatorInterface $paginator,Request $request){
         $covoiturage=$repo->findAll();
@@ -31,6 +37,8 @@ class CovoiturageController extends AbstractController
         return $this->render('covoiturage/Affichecov.html.twig',
     ['covs'=> $pagination]);
     }
+
+    
 
 
 
@@ -64,6 +72,8 @@ class CovoiturageController extends AbstractController
 }
 
 
+
+
 #[Route('/covoiturage/modifier/{id}',name:'modifc')]
 function ModifierR(Covoiturage $Covoiturage, Request $req, EntityManagerInterface $em) {
     # formulaire
@@ -90,6 +100,7 @@ return $this->render('Covoiturage/Ajoutcov.html.twig', [
 
 
 
+
 #[Route('/reponse/delete/{id}',name:'daletecov')]
     function DeleteR(ManagerRegistry $doctrine,Covoiturage $Covoiturage){
         //  $repo->remove($classroom,true);
@@ -100,6 +111,50 @@ return $this->render('Covoiturage/Ajoutcov.html.twig', [
           return $this->redirectToRoute('Aff');
       }
     
+
+      #[Route('/reponse/deleteB/{id}',name:'daletecovB')]
+    function DeleteRB(ManagerRegistry $doctrine,Covoiturage $Covoiturage){
+        //  $repo->remove($classroom,true);
+        // 2eme methode 
+        $em=$doctrine->getManager();
+        $em->remove($Covoiturage);
+        $em->flush();
+          return $this->redirectToRoute('AffB');
+      }
+    
+
+
+      #[Route('/trierParName', name: 'app_trier_depart')]
+      public function trierdepart(CovoiturageRepository $repo, PaginatorInterface $paginator,Request $request): Response
+      {
+          $recs = $repo->trierDepart();
+          $pagination = $paginator->paginate($recs, $request->query->getInt('page', 1), 5);
+          return $this->render('covoiturage/Affichecov.html.twig', [
+              'covs' => $pagination
+          ]);
+      }
+    
+      #[Route('/trierParEmail', name: 'app_trier_destination')]
+      public function trierdest(CovoiturageRepository $repo, PaginatorInterface $paginator,Request $request): Response
+      {
+          $recs =$repo->trierDestination();
+          $pagination = $paginator->paginate($recs, $request->query->getInt('page', 1), 5);
+    
+          return $this->render('covoiturage/Affichecov.html.twig', [
+              'covs' => $pagination 
+          ]);
+      }
+    
+      #[Route('/trierParEmail', name: 'app_trier_vehicule')]
+      public function triervehicule(CovoiturageRepository $repo, PaginatorInterface $paginator,Request $request): Response
+      {
+          $recs =$repo->trierVehicule();
+          $pagination = $paginator->paginate($recs, $request->query->getInt('page', 1), 5);
+    
+          return $this->render('covoiturage/Affichecov.html.twig', [
+              'covs' => $pagination 
+          ]);
+      }
 
 
 }

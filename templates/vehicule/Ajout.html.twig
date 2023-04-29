@@ -1,27 +1,37 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Chauffeur index{% endblock %}
+
+{% block body %}
+   <center> <h1>Vehicule List</h1></center>
+    <div class="d-flex justify-content-center mt-4">
+    <div class="text-center">
+   
+   
 {{ form_start(form,{'attr':{'novalidate':'novalidate'}})}}
               <div class="row">
                 <div class="col-md-6 form-group">
                  {{ form_label(form.modele) }}
-        {{ form_widget(form.modele,{'attr': {'class': 'form-control', 'placeholder': 'Enter your Lastname'}}) }}
+        {{ form_widget(form.modele,{'attr': {'class': 'form-control', 'placeholder': 'Enter your car model'}}) }}
         {{ form_errors(form.modele) }}
                 </div>
                  <div class="col-md-6 form-group">
                      {{ form_label(form.marque) }}
-        {{ form_widget(form.marque,{'attr': {'class': 'form-control', 'placeholder': 'Enter your Firstname'}}) }}
+        {{ form_widget(form.marque,{'attr': {'class': 'form-control', 'placeholder': 'Enter your car Brand'}}) }}
         {{ form_errors(form.marque) }}
                 </div>
               </div>
                <div class="form-group mt-3">
                        {{ form_label(form.type) }}
                       
-        {{ form_widget(form.type,{'attr': {'class': 'form-control', 'placeholder': 'Enter your reclamation Type'}}) }}
+        {{ form_widget(form.type,{'attr': {'class': 'form-control', 'placeholder': 'Enter your car Type'}}) }}
 
         {{ form_errors(form.type) }}
                 
               </div>
               <div class="form-group mt-3">
                    {{ form_label(form.idc) }}
-        {{ form_widget(form.idc,{'attr': {'class': 'form-control', 'placeholder': 'Enter your Number'}}) }}
+        {{ form_widget(form.idc,{'attr': {'class': 'form-control', 'placeholder': 'Enter the id of Conductor'}}) }}
         {{ form_errors(form.idc) }}
                 </div>
               <div class="form-group mt-3">
@@ -32,7 +42,7 @@
              
               <div class="form-group mt-3">
                {{ form_label(form.immatriculation) }}
-        {{ form_widget(form.immatriculation,{'attr': {'class': 'form-control', 'placeholder': 'Enter your Reclamation'}}) }}
+        {{ form_widget(form.immatriculation,{'attr': {'class': 'form-control', 'placeholder': 'Enter your Immatriculation'}}) }}
         {{ form_errors(form.immatriculation) }}
               </div>
                <div class="text-center" style="margin-top: 20px;" >
@@ -44,3 +54,37 @@
                   </div>
     {{ form_end(form) }}
            
+</div>
+</div>
+   
+
+
+
+
+{% endblock %}
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+

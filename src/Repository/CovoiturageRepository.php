@@ -63,4 +63,31 @@ class CovoiturageRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+
+public function trierDepart(){
+    $queryBuilder = $this->createQueryBuilder('c')
+        ->orderBy('c.depart', 'ASC')
+        ->getQuery()
+        ->getResult();
+    return $queryBuilder;}
+
+
+    public function trierDestination(){
+        $queryBuilder = $this->createQueryBuilder('c')
+            ->orderBy('c.destination', 'ASC')
+            ->getQuery()
+            ->getResult();
+        return $queryBuilder;}
+
+        public function trierVehicule(){
+            $queryBuilder = $this->createQueryBuilder('c')
+                ->orderBy('c.vehicule', 'ASC')
+                ->getQuery()
+                ->getResult();
+            return $queryBuilder;}
+
+
+     
+
 }

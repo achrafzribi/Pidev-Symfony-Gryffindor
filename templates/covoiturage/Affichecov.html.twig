@@ -1,4 +1,64 @@
- <input type="text" class="form-control" placeholder="Recherche" id="rech">
+ {% extends 'baseFront.html.twig' %}
+
+{% block title %}Infotrafic index{% endblock %}
+
+{% block body %}
+
+
+ <head>
+    <title>Search Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+  // Hide the results list on page load
+  $('#result-list').addClass('hidden');
+
+  // Show the results list when the search box is clicked
+  $('#search-box').on('click', function() {
+    $('#result-list').removeClass('hidden');
+  });
+
+  // Hide the results list when the search box loses focus
+  $('#search-box').on('blur', function() {
+    $('#result-list').addClass('hidden');
+  });
+
+  // Hide the results list when the user presses the "Tab" key to move to another element on the page
+  $('#search-box').on('keydown', function(event) {
+    if (event.keyCode === 9) {
+      $('#result-list').addClass('hidden');
+    }
+  });
+
+  // TODO: Add AJAX functionality to fetch search results and update the list
+});
+
+    </script>
+  </head>
+                  <br>
+
+                <br>
+
+                <br>
+
+                <br>
+
+                <br>
+
+<h1 style="text-align: center;">Covoiturage List</h1>
+    <div class="d-flex justify-content-center mt-4">
+    <div class="text-center">
+  
+    {% for flashMessage in app.flashes('success') %}
+    <div id="flash-message" class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+  {% endfor %}
+ 
+
+</div>
+</div>
+<input type="text" class="form-control" placeholder="Recherche" id="rech">
                 <br>
                 <script>
         function filterTable() {
@@ -19,6 +79,19 @@
         }
         document.getElementById('rech').addEventListener('keyup', filterTable);
     </script>
+
+ <div align="center">
+  <form action="">
+    <label for="orderBy" style="font-weight:bold; font-size:16px; color:#333;">Trier par :</label>
+    <select id="orderBy" name="client" onchange="location = this.value;" style="padding: 5px; border-radius: 5px; border: 1px solid #ccc;">
+      <option value=""></option>
+      <option value="{{ path('app_trier_depart') }}">Départ</option>
+      <option value="{{ path('app_trier_destination') }}">Destination</option>
+      <option value="{{ path('app_trier_vehicule') }}">Vehicule</option>
+    </select>
+  </form>
+</div>
+  
 <table border="2" style="" class="table table-borderless datatable" >
     <tr>
     
@@ -60,4 +133,33 @@
 
     {% endfor %}
 </table>
-      {{ knp_pagination_render(covs, '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig') }}
+
+   
+   
+<div class="pagination"style="display: flex; justify-content: center;">
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+  {{ knp_pagination_render(covs, '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig') }}
+</div>
+
+ {% include "chat/index.html.twig" %}
+
+{% endblock %}
+
+ 
+ 
+ 
+     
+
+
+
+
+

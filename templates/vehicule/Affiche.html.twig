@@ -1,6 +1,12 @@
+{% extends 'baseBack.html.twig' %}
 
- {% block body %}
- <input type="text" class="form-control" placeholder="Recherche" id="rech">
+{% block title %}Chauffeur index{% endblock %}
+
+{% block body %}
+   <center> <h1>Vehicule List</h1></center>
+    <div class="d-flex justify-content-center mt-4">
+    <div class="text-center">
+    <input type="text" class="form-control" placeholder="Recherche" id="rech">
                 <br>
                 <script>
         function filterTable() {
@@ -68,4 +74,32 @@
 
        {{ knp_pagination_render(vss, '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig') }}
 
- {% endblock %}
+    {% for flashMessage in app.flashes('success') %}
+    <div id="flash-message" class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+  {% endfor %}
+  
+</div>
+</div>
+   
+
+
+
+
+{% endblock %}
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
