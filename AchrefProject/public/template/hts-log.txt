@@ -1,0 +1,40 @@
+HTTrack3.49-2+htsswf+htsjava launched on Fri, 24 Mar 2023 15:35:07 at http://html.phoenixcoded.net/empire/bootstrap/default/dashboards_analytics.html?fbclid=IwAR1aCfKjO-NBBEaR4no0zlSUzoKkYfbJa5ieWtnsAhNiShrKup23M86q9iw +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" http://html.phoenixcoded.net/empire/bootstrap/default/dashboards_analytics.html?fbclid=IwAR1aCfKjO-NBBEaR4no0zlSUzoKkYfbJa5ieWtnsAhNiShrKup23M86q9iw -O1 "C:\Users\INFOTEC\Downloads\AdminTemplate" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+15:49:28	Warning: 	File not parsed, looks like binary: html.phoenixcoded.net/empire/bootstrap/default/assets/fonts/fontawesome/fa-brands-400.woff2
+15:49:29	Warning: 	File not parsed, looks like binary: html.phoenixcoded.net/empire/bootstrap/default/assets/fonts/fontawesome/fa-regular-400.woff2
+15:49:29	Warning: 	File not parsed, looks like binary: html.phoenixcoded.net/empire/bootstrap/default/assets/fonts/fontawesome/fa-solid-900.woff2
+15:49:29	Warning: 	File not parsed, looks like binary: html.phoenixcoded.net/empire/bootstrap/default/assets/fonts/linearicons/Linearicons-Free.woff2?w118d
+15:49:29	Warning: 	Retry after error -4 (No data (connection closed)) at link html.phoenixcoded.net/empire/bootstrap/default/assets/fonts/open-iconic/open-iconic.svg (from html.phoenixcoded.net/empire/bootstrap/default/assets/fonts/open-iconic.css)
+15:52:13	Error: 	"Not Found" (404) at link html.phoenixcoded.net/empire/bootstrap/default/[LINK] (from html.phoenixcoded.net/empire/bootstrap/default/member-mail-template.html)
+15:52:15	Error: 	"Not Found" (404) at link html.phoenixcoded.net/empire/bootstrap/default/assets/img/light-box/l1.jpg (from html.phoenixcoded.net/empire/bootstrap/default/help-ticket-details.html)
+15:52:15	Error: 	"Not Found" (404) at link html.phoenixcoded.net/empire/bootstrap/default/assets/img/light-box/sl1.jpg (from html.phoenixcoded.net/empire/bootstrap/default/help-ticket-details.html)
+15:52:15	Error: 	"Not Found" (404) at link html.phoenixcoded.net/empire/bootstrap/default/assets/img/light-box/l5.jpg (from html.phoenixcoded.net/empire/bootstrap/default/help-ticket-details.html)
+15:52:15	Error: 	"Not Found" (404) at link html.phoenixcoded.net/empire/bootstrap/default/assets/img/light-box/l6.jpg (from html.phoenixcoded.net/empire/bootstrap/default/help-ticket-details.html)
+15:52:15	Error: 	"Not Found" (404) at link html.phoenixcoded.net/empire/bootstrap/default/assets/img/light-box/l4.jpg (from html.phoenixcoded.net/empire/bootstrap/default/help-ticket-details.html)
+15:52:15	Error: 	"Not Found" (404) at link html.phoenixcoded.net/empire/bootstrap/default/assets/img/light-box/l3.jpg (from html.phoenixcoded.net/empire/bootstrap/default/help-ticket-details.html)
+15:52:15	Error: 	"Not Found" (404) at link html.phoenixcoded.net/empire/bootstrap/default/assets/img/light-box/sl3.jpg (from html.phoenixcoded.net/empire/bootstrap/default/help-ticket-details.html)
+15:52:15	Error: 	"Forbidden" (403) at link html.phoenixcoded.net/empire/bootstrap/default/assets/img/product/ (from html.phoenixcoded.net/empire/bootstrap/default/help-ticket-details.html)
+15:52:15	Error: 	"Forbidden" (403) at link html.phoenixcoded.net/empire/bootstrap/default/assets/img/user/ (from html.phoenixcoded.net/empire/bootstrap/default/help-ticket-details.html)
+15:52:18	Error: 	"Not Found" (404) at link html.phoenixcoded.net/empire/bootstrap/default/cropped.jpg (from html.phoenixcoded.net/empire/bootstrap/default/aui_cropper.html)
+15:52:22	Error: 	"Not Found" (404) at link html.phoenixcoded.net/empire/bootstrap/default/project-dashboard.html (from html.phoenixcoded.net/empire/bootstrap/default/dashboards_corona.html)
+15:52:22	Error: 	"Not Found" (404) at link html.phoenixcoded.net/empire/bootstrap/default/project-customers.html (from html.phoenixcoded.net/empire/bootstrap/default/dashboards_corona.html)
+15:52:22	Error: 	"Not Found" (404) at link html.phoenixcoded.net/empire/bootstrap/default/project-projects.html (from html.phoenixcoded.net/empire/bootstrap/default/dashboards_corona.html)
+15:52:22	Error: 	"Not Found" (404) at link html.phoenixcoded.net/empire/bootstrap/default/project-task.html (from html.phoenixcoded.net/empire/bootstrap/default/dashboards_corona.html)
+15:52:22	Error: 	"Not Found" (404) at link html.phoenixcoded.net/icon.png (from html.phoenixcoded.net/empire/bootstrap/default/dashboards_corona.html)
+15:52:22	Warning: 	File not parsed, looks like binary: html.phoenixcoded.net/empire/bootstrap/default/assets/fonts/cryptocoins/cryptocoins.woff2
+15:52:28	Error: 	"Not Found" (404) at link html.phoenixcoded.net/empire/bootstrap/default/assets/libs/img/loading.gif (from html.phoenixcoded.net/empire/bootstrap/default/assets/libs/blueimp-gallery/gallery.css)
+15:52:28	Error: 	"Not Found" (404) at link html.phoenixcoded.net/empire/bootstrap/default/assets/libs/img/error.png (from html.phoenixcoded.net/empire/bootstrap/default/assets/libs/blueimp-gallery/gallery.css)
+15:52:28	Error: 	"Not Found" (404) at link html.phoenixcoded.net/empire/bootstrap/default/assets/libs/img/play-pause.png (from html.phoenixcoded.net/empire/bootstrap/default/assets/libs/blueimp-gallery/gallery.css)
+15:52:28	Error: 	"Not Found" (404) at link html.phoenixcoded.net/empire/bootstrap/default/assets/libs/img/error.svg (from html.phoenixcoded.net/empire/bootstrap/default/assets/libs/blueimp-gallery/gallery.css)
+15:52:28	Error: 	"Not Found" (404) at link html.phoenixcoded.net/empire/bootstrap/default/assets/libs/img/play-pause.svg (from html.phoenixcoded.net/empire/bootstrap/default/assets/libs/blueimp-gallery/gallery.css)
+15:52:28	Error: 	"Not Found" (404) at link html.phoenixcoded.net/empire/bootstrap/default/assets/libs/img/video-play.png (from html.phoenixcoded.net/empire/bootstrap/default/assets/libs/blueimp-gallery/gallery-video.css)
+15:52:28	Error: 	"Not Found" (404) at link html.phoenixcoded.net/empire/bootstrap/default/assets/libs/img/video-play.svg (from html.phoenixcoded.net/empire/bootstrap/default/assets/libs/blueimp-gallery/gallery-video.css)
+
+HTTrack Website Copier/3.49-2 mirror complete in 17 minutes 22 seconds : 553 links scanned, 528 files written (45243521 bytes overall) [27867036 bytes received at 26743 bytes/sec], 20277251 bytes transferred using HTTP compression in 362 files, ratio 13%, 5.7 requests per connection
+(23 errors, 6 warnings, 0 messages)

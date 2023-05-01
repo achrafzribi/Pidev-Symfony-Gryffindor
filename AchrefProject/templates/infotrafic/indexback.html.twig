@@ -1,0 +1,75 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Infotrafic index{% endblock %}
+
+{% block body %}
+    <center><h1>Infotrafic List</h1></center>
+        <div class="text-center">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Chauffeur</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for infotrafic in infotrafics %}
+            <tr>
+                <td>{{ infotrafic.id }}</td>
+                <td>{{ infotrafic.type }}</td>
+                <td>{{ infotrafic.description }}</td>
+                <td>nom:{{infotrafic.chauffeur.nomc }}/prenom:{{infotrafic.chauffeur.prenomc }}/email:{{infotrafic.chauffeur.emailc }}/numéro:{{infotrafic.chauffeur.numc }}/adresse:{{infotrafic.chauffeur.adressec }}</td>
+                <td style="display: flex;gap: 10px; justify-content: center;">
+                 <Button>   <a href="{{ path('app_infotrafic_show_back', {'id': infotrafic.id}) }}">show</a></Button>
+                 <Button>    <a href="{{ path('app_infotrafic_edit_back', {'id': infotrafic.id}) }}">edit</a></Button>
+                    {{ include('infotrafic/_delete_form_back.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% for flashMessage in app.flashes('success') %}
+    <div id="flash-message" class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+  {% endfor %}
+    {% if infotrafics|length > 0 %}
+    <div class="d-flex justify-content-center my-4">
+        {{ knp_pagination_render(infotrafics) }}
+    </div>
+{% endif %}
+    </div>
+
+    <Button>  <a href="{{ path('app_infotrafic_new_back') }}">Create new</a></Button>
+    <style>
+        .mt-4 {
+            margin-top: 4rem;
+        }
+       
+        table {
+            width: 90%;
+            margin: 1rem auto;
+            border-collapse: collapse;
+            border: 2px solid #ffb6c1; /* pink border */
+            box-shadow: 0px 0px 10px #9370db; /* purple shadow */
+            table-layout: auto;
+            margin-right: 2rem;
+        }
+        th, td {
+            border: 1px solid ; /* purple border */
+           padding: 0.5rem;
+           text-align: center;
+           
+          }
+
+         
+        
+    </style>
+{% endblock %}
