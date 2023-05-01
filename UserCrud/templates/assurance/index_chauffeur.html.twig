@@ -1,0 +1,173 @@
+{% extends 'base-front_chauffeur.html.twig' %}
+
+{% block title %}Assurance index{% endblock %}
+
+{% block body %}
+    <!DOCTYPE html>
+<html lang="en-US">
+<!-- Mirrored from prium.github.io/tryposh/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 12 Apr 2023 00:30:42 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--  --><!--    Document Title--><!-- =============================================-->
+    <!--  --><!--    Favicons--><!--    =============================================-->
+    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('front-office/images/favicons/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{asset('front-office/images/favicons/favicon-96x96.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('front-office/images/favicons/favicon-16x16.png')}}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{{asset('front-office/images/favicons/ms-icon-144x144.png')}}">
+    <meta name="theme-color" content="#ffffff">
+    {% block css%}
+    <!--  --><!--    Stylesheets--><!--    =============================================--><!-- Default stylesheets-->
+    <link href="{{asset('front-office/lib/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- Template specific stylesheets-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i " rel="stylesheet">
+    <link href="{{asset('front-office/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('front-office/lib/iconsmind/iconsmind.css')}}" rel="stylesheet">
+    <link href="{{asset('front-office/lib/css-hamburgers/dist/hamburgers.css')}}" rel="stylesheet"><!-- Main stylesheet and color file-->
+    <link href="{{asset('front-office/css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('front-office/css/custom.css')}}" rel="stylesheet">
+    {% endblock %}
+</head>
+ <data-spy="scroll" data-target=".inner-link" data-offset="60">
+    <main>
+        <div class="znav-container znav-white znav-fixed border-bottom color-10" id="znav-container">
+            <div class="container">
+                <nav class="navbar navbar-toggleable-md"><button class="navbar-toggler navbar-toggler-right"
+                        type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <div class="hamburger hamburger--emphatic">
+                            <div class="hamburger-box">
+                                <div class="hamburger-inner"></div>
+                            </div>
+                        </div>
+                    </button><a class="navbar-brand overflow-hidden" href="{{ path('app_home_front_chauffeur') }}"><img
+                            src="{{asset('front-office/images/posh.png')}}" alt='logo' width='80px'></a>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ml-auto">
+                            <li><a href="JavaScript:void(0)">Settings</a>
+                                <ul class="dropdown">
+                                    <li><a href="JavaScript:void(0)">Account</a>
+                                        <ul class="dropdown dropdown-push-right">
+                                        <li><a href="{{ path('app_user_show_front_chauffeur', {'id': user.id}) }}">view Profile</a></li>
+                                            <li><a href="{{ path('app_user_edit_front_chauffeur', {'id': user.id}) }}">Account Settings</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="{{ path('app_logout') }}">Log out</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="JavaScript:void(0)">Assurance</a>
+                                <ul class="dropdown">
+                                    <li><a href="{{ path('app_assurance_new', {'id': user.id}) }}">Ajouter Assurance</a></li>
+{% if assurance is not null and assurance.createdBy is not null %}
+    <li><a href="{{ path('app_assurance_index_chauffeur', {'created_by_id': assurance.createdBy.id}) }}">consulter votre assurance</a></li>
+{% endif %}
+</li>                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div><!-- /.container-->
+        </div><!-- /.znav-container-->
+                <section class="color-1 background-10 font-1 py-6">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                     <h4>Modifier mon mot de passe : </h4>
+                        <h1 class="fs-3 fs-sm-4 fw-400">Assurance</h1>
+                    </div>
+                </div><!--/.row-->
+            </div><!--/.container-->
+        </section>
+        <section class="font-1 pt-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="my-6"></div>
+                        <h4>Table Assurance</h4>
+                        <div class="my-4"></div>
+                        <div class="table-responsive">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date_validite</th>
+                <th>Immatriculation</th>
+                <th>options</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for assurance in assurances %}
+            <tr>
+                <td>{{ assurance.id }}</td>
+                <td>{{ assurance.dateValidite ? assurance.dateValidite|date('Y-m-d') : '' }}</td>
+                <td>{{ assurance.immatriculation }}</td>
+                <td>
+<a href="{{ path('app_assurance_show', {'id': assurance.id, 'created_by_id': assurance.createdBy.id}) }}">show</a>
+<a href="{{ path('app_assurance_edit', {'id': assurance.id, 'created_by_id': assurance.createdBy.id}) }}">edit</a>
+                    <form action="{{ path('app_assurance_delete_chauffeur', {'id': assurance.id}) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_method" value="POST">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ assurance.id) }}">
+    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+</form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">vous ne possedez pas d'assurance</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('app_home_front_chauffeur') }}">back</a>
+               </div>
+                    </div>
+                </div><!--/.row-->
+            </div><!--/.container-->
+        </section>
+        <footer class="background-11 color-1 py-3 fs--1 fw-600">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 font-1">&copy; 2017 POSH &trade; Inc. </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+        {% block js %}
+    <!--  --><!--    JavaScripts--><!--    =============================================-->
+    <script src="{{asset('front-office/lib/jquery/dist/jquery.js')}}"></script>
+    <script src="{{asset('front-office/js/tether.min.js')}}"></script>
+    <script src="{{asset('front-office/lib/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <!-- Hotjar Tracking Code for http://markup.themewagon.com/tryposh-->
+    <script>(function (h, o, t, j, a, r) {
+            h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+            h._hjSettings = { hjid: 588723, hjsv: 5 };
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script'); r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');</script>
+    <script>(function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '../../www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-76729372-3', 'auto');
+        ga('send', 'pageview');</script>
+    <script src="{{asset('front-office/lib/typed.js/dist/typed.min.js')}}"></script>
+    <script src="{{asset('front-office/lib/isotope/dist/isotope.pkgd.js')}}"></script>
+    <script src="{{asset('front-office/js/core.js')}}"></script>
+    <script src="{{asset('front-office/js/main.js')}}"></script>
+    <script src="{{asset('front-office/lib/prism/prism.js')}}"></script>
+    {% endblock %}
+<!-- Mirrored from prium.github.io/tryposh/component-tables.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 12 Apr 2023 00:34:30 GMT -->
+
+</html>
+    
+{% endblock %}
