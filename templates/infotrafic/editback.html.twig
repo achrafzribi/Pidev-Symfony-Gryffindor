@@ -1,0 +1,12 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Edit Infotrafic{% endblock %}
+
+{% block body %}
+    <h1>Edit Infotrafic</h1>
+
+    {{ include('infotrafic/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_infotrafic_index_back') }}">back to list</a>
+
+{% endblock %}
