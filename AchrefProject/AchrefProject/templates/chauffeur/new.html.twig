@@ -1,0 +1,11 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}New Chauffeur{% endblock %}
+
+{% block body %}
+    <h1>Create new Chauffeur</h1>
+
+    {{ include('chauffeur/_form.html.twig') }}
+
+    <a href="{{ path('app_chauffeur_index_back') }}">back to list</a>
+{% endblock %}
