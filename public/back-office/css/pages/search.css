@@ -1,0 +1,6 @@
+.default-style .search-nav.nav {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important; }
+
+.material-style .search-nav.nav {
+  border: none !important;
+  box-shadow: none; }
